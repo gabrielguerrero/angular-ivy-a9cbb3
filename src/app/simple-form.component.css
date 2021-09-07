@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form > .control {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  padding: 5px;
+}
+.control > label {
+  flex: 0 0 100px;
+}
+.control > *:not(label) {
+  flex: 1 1 200px;
+  /* border: 1px solid red; */
+}
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.margin-left {
+  margin-left: 5px;
+}
+.error {
+  display: none;
+  color: red;
+}
+.ng-submitted .error,
+.ng-touched + .error,
+.ng-dirty + .error {
+  display: inline;
+}
+/* @media only screen and (max-width: 600px) {
+  .form > .control {
+    flex-direction: column;
+  }
+} */
