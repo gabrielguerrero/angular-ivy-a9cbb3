@@ -25,7 +25,7 @@ export class SimpleFormComponent implements OnInit{
   private submitted = false;
 
   get showErrors(){
-    return this.form.invalid && ((this.form.touched && this.form.dirty) || this.submitted);
+    return this.form.invalid && ((this.form.touched) || this.submitted);
   }
   
   constructor(private fb: FormBuilder, private titleService: TitleService) {}
