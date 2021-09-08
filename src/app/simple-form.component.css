@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
 }
-.form > .control {
+.control {
   display: flex;
   flex-direction: row;
   height: 30px;
@@ -26,9 +26,12 @@
   display: none;
   color: red;
 }
-.ng-submitted .error,
+/* .ng-submitted .error,
 .ng-touched + .error,
 .ng-dirty + .error {
+  display: inline;
+} */
+.has-error .error {
   display: inline;
 }
 /* @media only screen and (max-width: 600px) {

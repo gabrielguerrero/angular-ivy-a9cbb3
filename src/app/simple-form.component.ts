@@ -7,7 +7,7 @@ import { TitleService } from './title.service';
   selector: 'simple-form',
   templateUrl: './simple-form.component.html',
   styleUrls: ['./simple-form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SimpleFormComponent implements OnInit{
   titles$ = this.titleService
@@ -40,7 +40,8 @@ export class SimpleFormComponent implements OnInit{
     });
   }
 
-  submit() {
+
+  submit() {  
     console.log(this.form.value);
   }
 }

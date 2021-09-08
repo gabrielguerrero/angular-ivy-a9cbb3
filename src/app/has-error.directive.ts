@@ -1,16 +1,46 @@
-import { Directive, HostBinding, ViewChild, OnChanges } from '@angular/core';
+import {
+  Directive,
+  HostBinding,
+  ViewChild,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ContentChild
+} from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Directive({ selector: '[has-error]' })
-export class HasErrorDirective implements OnChanges {
+export class HasErrorDirective implements OnInit, OnDestroy {
   @HostBinding('class.has-error') hasError = false;
 
-  @ViewChild(NgControl) control;
+  @ContentChild(NgControl) control: NgControl;
 
-  constructor(private form: FormGroupDirective) {}
+  destroy$ = new Subject();
 
-  ngOnChanges() {
-    this.hasError =
-      this.form.submitted || (this.control.touch && this.control.dirty);
+  constructor(private form: FormGroupDirective) {
+    console.log('hidsadasdasde');
+  }
+
+  ngOnInit() {
+    console.log('gfghf', this.hasError);
+    this.form.control.statusChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.hasError =
+          this.control.invalid && (this.form.submitted || this.control.touched);
+        console.log(
+          this.hasError,
+          this.control.touched,
+          this.control.dirty,
+          this.form.submitted
+        );
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }
