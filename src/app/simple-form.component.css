@@ -23,19 +23,5 @@
   margin-left: 5px;
 }
 .error {
-  display: none;
   color: red;
 }
-/* .ng-submitted .error,
-.ng-touched + .error,
-.ng-dirty + .error {
-  display: inline;
-} */
-.has-error .error {
-  display: inline;
-}
-/* @media only screen and (max-width: 600px) {
-  .form > .control {
-    flex-direction: column;
-  }
-} */

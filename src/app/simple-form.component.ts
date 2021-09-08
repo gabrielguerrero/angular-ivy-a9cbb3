@@ -7,7 +7,7 @@ import { TitleService } from './title.service';
   selector: 'simple-form',
   templateUrl: './simple-form.component.html',
   styleUrls: ['./simple-form.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SimpleFormComponent implements OnInit{
   titles$ = this.titleService
@@ -22,6 +22,12 @@ export class SimpleFormComponent implements OnInit{
 
   form: FormGroup;
 
+  private submitted = false;
+
+  get showErrors(){
+    return this.form.invalid && ((this.form.touched && this.form.dirty) || this.submitted);
+  }
+  
   constructor(private fb: FormBuilder, private titleService: TitleService) {}
 
   ngOnInit(){
@@ -40,8 +46,8 @@ export class SimpleFormComponent implements OnInit{
     });
   }
 
-
   submit() {  
-    console.log(this.form.value);
+    this.submitted = true;
+    this.form.valid && console.log(this.form.value);
   }
 }

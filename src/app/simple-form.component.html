@@ -13,16 +13,16 @@
       <label>First name</label>
       <input formControlName="firstName" type="text" placeholder="First name"/>
     </div>
-    <div has-error>
-      <div class="control">
-        <label>Last name</label>
-        <input formControlName="lastName" type="text" placeholder="Last name"/>
-      </div>
-      <span class="error" *ngIf="form.controls.lastName.errors?.required">
-        *Last name is mandatory
-      </span>
+
+    <div class="control">
+      <label>Last name</label>
+      <input formControlName="lastName" type="text" placeholder="Last name"/>
     </div>
-    {{form.controls.lastName.errors?.required}}
+
+    <span class="error" *ngIf="form.controls.lastName.errors?.required && showErrors">
+      *Last name is mandatory
+    </span>
+
     <div>
       <input class="margin-left" id="check" type="checkbox" formControlName="acceptTerms"/>
       <label for="check"> I accept the terms & conditions</label>
