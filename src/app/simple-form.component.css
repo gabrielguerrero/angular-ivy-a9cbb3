@@ -14,7 +14,6 @@
 }
 .control > *:not(label) {
   flex: 1 1 200px;
-  /* border: 1px solid red; */
 }
 
 .actions {

@@ -6,7 +6,6 @@
       <select formControlName="title">
         <option value="">-- Select an option --</option>
         <option *ngFor="let title of titles$ | async" [value]="title.name">{{title.name}}</option>
-        <!-- TODO: add titles to dropdown -->
       </select>
     </div>
     <div class="control">
