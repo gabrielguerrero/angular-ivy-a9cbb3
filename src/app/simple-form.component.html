@@ -16,10 +16,10 @@
 
     <div class="control">
       <label>Last name</label>
-      <input formControlName="lastName" type="text" placeholder="Last name"/>
+      <input formControlName="lastName" type="text" placeholder="Last name" [ngClass]="{'has-errors': form.controls.lastName.errors?.required && showErrors}"/>
     </div>
 
-    <span class="error" *ngIf="form.controls.lastName.errors?.required && showErrors">
+    <span class="error-message" *ngIf="form.controls.lastName.errors?.required && showErrors">
       *Last name is mandatory
     </span>
 
